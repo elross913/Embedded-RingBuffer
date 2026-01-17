@@ -23,7 +23,14 @@ jobs:
       run: ls -R  # Cette ligne va afficher tous les fichiers que la CI voit vraiment
 
     - name: 1. Analyse Statique (Linting)
-      run: cppcheck --enable=all --error-exitcode=1 include/
+      run: |
+        cppcheck --enable=all \
+                 --language=c++ \
+                 --std=c++17 \
+                 --force \
+                 --error-exitcode=1 \
+                 -I include/ \
+                 .
 
     - name: 2. Configuration CMake
       run: cmake -B build -S .
