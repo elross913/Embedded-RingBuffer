@@ -1,0 +1,32 @@
+name: C++ CI Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout du code
+      uses: actions/checkout@v4
+
+    - name: Installation des outils
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ cppcheck
+
+    - name: 1. Analyse Statique (Linting)
+      run: cppcheck --enable=all --error-exitcode=1 include/
+
+    - name: 2. Configuration CMake
+      run: cmake -B build -S .
+
+    - name: 3. Compilation
+      run: cmake --build build
+
+    - name: 4. Exécution des Tests
+      run: cd build && ctest --output-on-failure
