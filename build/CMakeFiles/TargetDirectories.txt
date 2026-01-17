@@ -1,0 +1,4 @@
+/Users/guillaumerossi/Downloads/Embedded-RingBuffer/build/CMakeFiles/unit_tests.dir
+/Users/guillaumerossi/Downloads/Embedded-RingBuffer/build/CMakeFiles/test.dir
+/Users/guillaumerossi/Downloads/Embedded-RingBuffer/build/CMakeFiles/edit_cache.dir
+/Users/guillaumerossi/Downloads/Embedded-RingBuffer/build/CMakeFiles/rebuild_cache.dir

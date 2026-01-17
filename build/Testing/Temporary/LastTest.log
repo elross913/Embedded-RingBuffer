@@ -1,0 +1,19 @@
+Start testing: Jan 17 15:57 CET
+----------------------------------------------------------
+1/1 Testing: BufferTests
+1/1 Test: BufferTests
+Command: "/Users/guillaumerossi/Downloads/Embedded-RingBuffer/build/unit_tests"
+Directory: /Users/guillaumerossi/Downloads/Embedded-RingBuffer/build
+"BufferTests" start time: Jan 17 15:57 CET
+Output:
+----------------------------------------------------------
+TOUS LES TESTS SONT PASSÉS ! (Vert 🟢)
+<end of output>
+Test time =   0.34 sec
+----------------------------------------------------------
+Test Passed.
+"BufferTests" end time: Jan 17 15:57 CET
+"BufferTests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jan 17 15:57 CET
