@@ -18,6 +18,9 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y cmake g++ cppcheck
+    
+    - name: Debug - Liste des fichiers
+      run: ls -R  # Cette ligne va afficher tous les fichiers que la CI voit vraiment
 
     - name: 1. Analyse Statique (Linting)
       run: cppcheck --enable=all --error-exitcode=1 include/
