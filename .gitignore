@@ -1,0 +1,5 @@
+.cache/
+*.o
+unit_tests
+build/
+build_docker/
