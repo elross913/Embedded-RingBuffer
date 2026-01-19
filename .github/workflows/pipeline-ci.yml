@@ -17,10 +17,8 @@ jobs:
     - name: 1. Build de l'image
       run: make build_image
 
-    - name: 2. Vérification du formatage (Style)
-      run: |
-        docker run --rm -v ${{ github.workspace }}:/app embedded-factory \
-        bash -c "find . -iname *.hpp -o -iname *.cpp | xargs clang-format --dry-run --Werror"
+    - name: 2. Vérification du formatage
+      run: make check-format
 
     - name: 3. Analyse et Tests
       run: make test
