@@ -14,8 +14,13 @@ jobs:
     - name: Checkout du code
       uses: actions/checkout@v4
 
-    - name: 1. Construction de l'image de l'usine
+    - name: 1. Build de l'image
       run: make build_image
 
-    - name: 2. Exécution de l'analyse et des tests dans Docker
+    - name: 2. Vérification du formatage (Style)
+      run: |
+        docker run --rm -v ${{ github.workspace }}:/app embedded-factory \
+        bash -c "find . -iname *.hpp -o -iname *.cpp | xargs clang-format --dry-run --Werror"
+
+    - name: 3. Analyse et Tests
       run: make test

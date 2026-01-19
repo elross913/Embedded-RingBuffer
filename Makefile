@@ -12,6 +12,14 @@ all: build_image test
 build_image:
 	docker build -t $(IMAGE_NAME) .
 
+# Formate automatiquement tout le code source
+format:
+	docker run --rm -v $(shell pwd):/app $(IMAGE_NAME) bash -c "find . -iname *.hpp -o -iname *.cpp | xargs clang-format -i"
+
+# Analyse statique poussée (bonnes pratiques C++)
+lint:
+	docker run --rm -v $(shell pwd):/app $(IMAGE_NAME) bash -c "clang-tidy include/ring_buffer.hpp -- -I include -std=c++17"
+
 # Étape d'exécution du cycle complet dans Docker
 # On monte le répertoire courant dans /app du conteneur
 test:
