@@ -1,4 +1,4 @@
-name: C++ CI Pipeline
+name: C++ CI Pipeline (Dockerized)
 
 on:
   push:
@@ -14,31 +14,8 @@ jobs:
     - name: Checkout du code
       uses: actions/checkout@v4
 
-    - name: Installation des outils
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake g++ cppcheck
-    
-    - name: Debug - Liste des fichiers
-      run: ls -R  # Cette ligne va afficher tous les fichiers que la CI voit vraiment
+    - name: 1. Construction de l'image de l'usine
+      run: make build_image
 
-    - name: 1. Analyse Statique (Linting)
-      run: |
-        cppcheck --enable=all \
-                 --inline-suppr \
-                 --suppress=missingIncludeSystem \
-                 --language=c++ \
-                 --std=c++17 \
-                 --force \
-                 --error-exitcode=1 \
-                 -I include/ \
-                 .
-
-    - name: 2. Configuration CMake
-      run: cmake -B build -S .
-
-    - name: 3. Compilation
-      run: cmake --build build
-
-    - name: 4. Exécution des Tests
-      run: cd build && ctest --output-on-failure
+    - name: 2. Exécution de l'analyse et des tests dans Docker
+      run: make test
